@@ -1,0 +1,8 @@
+{
+  "name": "conorsmith/phpdublinmonitor",
+  "autoload": {
+    "psr-4": {
+      "ConorSmith\\PhpDublinMonitor\\": "src/"
+    }
+  }
+}
