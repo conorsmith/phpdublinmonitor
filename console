@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 require_once __DIR__ . "/bootstrap.php";
 
-$kernel = new ConorSmith\PhpDublinMonitor\Console\Kernel;
+$kernel = new ConorSmith\PhpDublinMonitor\Console\Kernel(
+    new \Symfony\Component\Console\Application
+);
 
 $kernel->handle();

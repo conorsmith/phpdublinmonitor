@@ -7,10 +7,16 @@ use Symfony\Component\Console\Application;
 
 class Kernel
 {
+    /** @var Application */
+    private $delegateKernel;
+
+    public function __construct(Application $delegateKernel)
+    {
+        $this->delegateKernel = $delegateKernel;
+    }
+
     public function handle(): void
     {
-        $delegateKernel = new Application;
-
-        $delegateKernel->run();
+        $this->delegateKernel->run();
     }
 }
