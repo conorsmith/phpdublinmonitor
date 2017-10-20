@@ -2,3 +2,7 @@
 declare(strict_types=1);
 
 require_once __DIR__ . "/bootstrap.php";
+
+$kernel = new ConorSmith\PhpDublinMonitor\Console\Kernel;
+
+$kernel->handle();
