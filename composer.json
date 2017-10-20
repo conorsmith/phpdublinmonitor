@@ -4,5 +4,8 @@
     "psr-4": {
       "ConorSmith\\PhpDublinMonitor\\": "src/"
     }
+  },
+  "require": {
+    "symfony/console": "^3.3"
   }
 }
