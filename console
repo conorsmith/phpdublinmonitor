@@ -3,10 +3,10 @@ declare(strict_types=1);
 
 require_once __DIR__ . "/bootstrap.php";
 
-$symfonyKernel = new \Symfony\Component\Console\Application;
+$application = new \ConorSmith\PhpDublinMonitor\Application(
+    new \Illuminate\Container\Container
+);
 
-$symfonyKernel->add(new \ConorSmith\PhpDublinMonitor\Console\LogWebsiteStatusCommand);
-
-$kernel = new ConorSmith\PhpDublinMonitor\Console\Kernel($symfonyKernel);
+$kernel = $application->make(\ConorSmith\PhpDublinMonitor\Console\Kernel::class);
 
 $kernel->handle();
