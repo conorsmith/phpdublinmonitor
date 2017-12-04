@@ -6,6 +6,7 @@
     }
   },
   "require": {
-    "symfony/console": "^3.3"
+    "symfony/console": "^3.3",
+    "illuminate/container": "^5.5"
   }
 }
