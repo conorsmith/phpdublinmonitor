@@ -9,6 +9,7 @@
     "symfony/console": "^3.3",
     "illuminate/container": "^5.5",
     "doctrine/dbal": "^2.6",
-    "vlucas/phpdotenv": "^2.4"
+    "vlucas/phpdotenv": "^2.4",
+    "robmorgan/phinx": "^0.9.1"
   }
 }
