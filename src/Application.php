@@ -3,12 +3,8 @@ declare(strict_types=1);
 
 namespace ConorSmith\PhpDublinMonitor;
 
-use ConorSmith\PhpDublinMonitor\Console\Kernel;
-use ConorSmith\PhpDublinMonitor\Console\LogWebsiteStatusCommand;
-use Doctrine\DBAL\DriverManager;
 use Dotenv\Dotenv;
 use Illuminate\Contracts\Container\Container;
-use Symfony\Component\Console\Application as SymfonyConsole;
 
 class Application
 {
@@ -24,30 +20,12 @@ class Application
     private function boot(): void
     {
         (new Dotenv(__DIR__ . "/../"))->load();
-        $this->registerServices();
+        $this->registerServiceProviders();
     }
 
-    private function registerServices(): void
+    private function registerServiceProviders(): void
     {
-        $this->container[Kernel::class] = function ($container) {
-            $symfonyKernel = new SymfonyConsole;
-
-            $symfonyKernel->add($container[LogWebsiteStatusCommand::class]);
-
-            return new Kernel($symfonyKernel);
-        };
-
-        $this->container[LogWebsiteStatusCommand::class] = function ($container) {
-            return new LogWebsiteStatusCommand(
-                DriverManager::getConnection([
-                    'driver'   => "pdo_mysql",
-                    'host'     => getenv('DB_HOST'),
-                    'dbname'   => getenv('DB_NAME'),
-                    'user'     => getenv('DB_USER'),
-                    'password' => getenv('DB_PASS'),
-                ])
-            );
-        };
+        (new Console\ServiceProvider)->register($this->container);
     }
 
     public function make(string $className)
