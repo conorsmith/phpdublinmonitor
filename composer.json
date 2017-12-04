@@ -7,6 +7,7 @@
   },
   "require": {
     "symfony/console": "^3.3",
-    "illuminate/container": "^5.5"
+    "illuminate/container": "^5.5",
+    "doctrine/dbal": "^2.6"
   }
 }
