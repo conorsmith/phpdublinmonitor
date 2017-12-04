@@ -3,8 +3,7 @@ declare(strict_types=1);
 
 namespace ConorSmith\PhpDublinMonitor\Console;
 
-use Doctrine\DBAL\DriverManager;
-use Icecave\Chrono\Clock\SystemClock;
+use ConorSmith\PhpDublinMonitor\LogWebsiteStatus;
 use Illuminate\Contracts\Container\Container;
 use Symfony\Component\Console\Application as SymfonyConsole;
 
@@ -21,16 +20,7 @@ class ServiceProvider
         };
 
         $container[LogWebsiteStatusCommand::class] = function ($container) {
-            return new LogWebsiteStatusCommand(
-                DriverManager::getConnection([
-                    'driver'   => "pdo_mysql",
-                    'host'     => getenv('DB_HOST'),
-                    'dbname'   => getenv('DB_NAME'),
-                    'user'     => getenv('DB_USER'),
-                    'password' => getenv('DB_PASS'),
-                ]),
-                new SystemClock
-            );
+            return new LogWebsiteStatusCommand($container[LogWebsiteStatus::class]);
         };
     }
 }

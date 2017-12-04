@@ -26,6 +26,7 @@ class Application
     private function registerServiceProviders(): void
     {
         (new Console\ServiceProvider)->register($this->container);
+        (new ServiceProvider)->register($this->container);
     }
 
     public function make(string $className)
