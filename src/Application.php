@@ -6,6 +6,7 @@ namespace ConorSmith\PhpDublinMonitor;
 use ConorSmith\PhpDublinMonitor\Console\Kernel;
 use ConorSmith\PhpDublinMonitor\Console\LogWebsiteStatusCommand;
 use Doctrine\DBAL\DriverManager;
+use Dotenv\Dotenv;
 use Illuminate\Contracts\Container\Container;
 use Symfony\Component\Console\Application as SymfonyConsole;
 
@@ -17,6 +18,12 @@ class Application
     public function __construct(Container $container)
     {
         $this->container = $container;
+        $this->boot();
+    }
+
+    private function boot(): void
+    {
+        (new Dotenv(__DIR__ . "/../"))->load();
         $this->registerServices();
     }
 
