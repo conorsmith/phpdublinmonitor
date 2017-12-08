@@ -12,6 +12,7 @@
     "vlucas/phpdotenv": "^2.4",
     "robmorgan/phinx": "^0.9.1",
     "icecave/chrono": "^1.0",
-    "guzzlehttp/guzzle": "^6.3"
+    "guzzlehttp/guzzle": "^6.3",
+    "shrikeh/teapot": "^2.3"
   }
 }
