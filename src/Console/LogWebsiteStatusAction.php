@@ -23,7 +23,7 @@ class LogWebsiteStatusAction extends Command
     {
         $this
             ->setName("log:status")
-            ->setDescription("Logs the current status of the PHPDublin website");
+            ->setDescription("Logs the current status of the PHP Dublin website");
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
