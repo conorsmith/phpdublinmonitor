@@ -14,13 +14,13 @@ class ServiceProvider
         $container[Kernel::class] = function ($container) {
             $symfonyKernel = new SymfonyConsole;
 
-            $symfonyKernel->add($container[LogWebsiteStatusCommand::class]);
+            $symfonyKernel->add($container[LogWebsiteStatusAction::class]);
 
             return new Kernel($symfonyKernel);
         };
 
-        $container[LogWebsiteStatusCommand::class] = function ($container) {
-            return new LogWebsiteStatusCommand($container[LogWebsiteStatus::class]);
+        $container[LogWebsiteStatusAction::class] = function ($container) {
+            return new LogWebsiteStatusAction($container[LogWebsiteStatus::class]);
         };
     }
 }

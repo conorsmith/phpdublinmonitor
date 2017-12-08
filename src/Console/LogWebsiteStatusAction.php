@@ -8,7 +8,7 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class LogWebsiteStatusCommand extends Command
+class LogWebsiteStatusAction extends Command
 {
     /** @var LogWebsiteStatus */
     private $logWebsiteStatus;
