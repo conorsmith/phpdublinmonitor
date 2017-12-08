@@ -6,6 +6,7 @@ namespace ConorSmith\PhpDublinMonitor\Web;
 use Doctrine\DBAL\Connection;
 use Illuminate\Contracts\Container\Container;
 use League\Plates\Engine;
+use League\Route\RouteCollection;
 
 class ServiceProvider
 {
@@ -16,6 +17,14 @@ class ServiceProvider
                 $container[Connection::class],
                 new Engine(__DIR__ . "/../../resources/templates")
             );
+        };
+
+        $container[RouteCollection::class] = function ($container) {
+            $routes = new RouteCollection;
+
+            $routes->map('GET', "/", $container[DisplayWebsiteStatusAction::class]);
+
+            return $routes;
         };
     }
 }

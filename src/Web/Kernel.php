@@ -3,18 +3,22 @@ declare(strict_types=1);
 
 namespace ConorSmith\PhpDublinMonitor\Web;
 
+use League\Route\RouteCollection;
+use Zend\Diactoros\Response;
+use Zend\Diactoros\ServerRequestFactory;
+
 class Kernel
 {
-    /** @var DisplayWebsiteStatusAction */
-    private $action;
+    /** @var RouteCollection */
+    private $routes;
 
-    public function __construct(DisplayWebsiteStatusAction $action)
+    public function __construct(RouteCollection $routes)
     {
-        $this->action = $action;
+        $this->routes = $routes;
     }
 
     public function handle(): void
     {
-        $this->action->__invoke();
+        $this->routes->dispatch(ServerRequestFactory::fromGlobals(), new Response);
     }
 }

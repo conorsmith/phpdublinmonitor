@@ -6,6 +6,8 @@ namespace ConorSmith\PhpDublinMonitor\Web;
 use DateTimeImmutable;
 use Doctrine\DBAL\Connection;
 use League\Plates\Engine;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 
 class DisplayWebsiteStatusAction
 {
@@ -21,7 +23,7 @@ class DisplayWebsiteStatusAction
         $this->templateEngine = $templateEngine;
     }
 
-    public function __invoke(): void
+    public function __invoke(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
     {
         $row = $this->db->fetchAssoc("SELECT * FROM website_status ORDER BY logged_at DESC LIMIT 1");
 
@@ -29,5 +31,7 @@ class DisplayWebsiteStatusAction
             'status'      => $row['online'] ? "online" : "offline",
             'lastUpdated' => DateTimeImmutable::createFromFormat("Y-m-d H:i:s", $row['logged_at']),
         ]);
+
+        return $response;
     }
 }
