@@ -13,6 +13,9 @@
         <p class="text-center" style="margin-top: 20px;">
             The PHP Dublin website is <strong><?=$status?></strong>
         </p>
+        <p class="text-center">
+            <small>Last updated <em><?=$lastUpdated->format("g:ia jS M Y")?></em></small>
+        </p>
     </div>
 
 </body>
