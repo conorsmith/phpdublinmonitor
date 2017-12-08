@@ -13,6 +13,7 @@
     "robmorgan/phinx": "^0.9.1",
     "icecave/chrono": "^1.0",
     "guzzlehttp/guzzle": "^6.3",
-    "shrikeh/teapot": "^2.3"
+    "shrikeh/teapot": "^2.3",
+    "league/plates": "^3.3"
   }
 }
