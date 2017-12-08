@@ -29,6 +29,6 @@ class LogWebsiteStatusAction extends Command
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $this->logWebsiteStatus->__invoke();
-        $output->writeln("Dummy data inserted");
+        $output->writeln("PHP Dublin website status logged");
     }
 }

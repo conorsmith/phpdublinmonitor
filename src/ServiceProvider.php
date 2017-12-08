@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace ConorSmith\PhpDublinMonitor;
 
 use Doctrine\DBAL\DriverManager;
+use GuzzleHttp\Client;
 use Icecave\Chrono\Clock\SystemClock;
 use Illuminate\Contracts\Container\Container;
 
@@ -13,6 +14,9 @@ class ServiceProvider
     {
         $container[LogWebsiteStatus::class] = function ($container) {
             return new LogWebsiteStatus(
+                new Client([
+                    'http_errors' => false,
+                ]),
                 DriverManager::getConnection([
                     'driver'   => "pdo_mysql",
                     'host'     => getenv('DB_HOST'),
