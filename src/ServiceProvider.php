@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace ConorSmith\PhpDublinMonitor;
 
+use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\DriverManager;
 use GuzzleHttp\Client;
 use Icecave\Chrono\Clock\SystemClock;
@@ -17,15 +18,19 @@ class ServiceProvider
                 new Client([
                     'http_errors' => false,
                 ]),
-                DriverManager::getConnection([
-                    'driver'   => "pdo_mysql",
-                    'host'     => getenv('DB_HOST'),
-                    'dbname'   => getenv('DB_NAME'),
-                    'user'     => getenv('DB_USER'),
-                    'password' => getenv('DB_PASS'),
-                ]),
+                $container[Connection::class],
                 new SystemClock
             );
+        };
+
+        $container[Connection::class] = function ($container) {
+            return DriverManager::getConnection([
+                'driver'   => "pdo_mysql",
+                'host'     => getenv('DB_HOST'),
+                'dbname'   => getenv('DB_NAME'),
+                'user'     => getenv('DB_USER'),
+                'password' => getenv('DB_PASS'),
+            ]);
         };
     }
 }
