@@ -6,6 +6,7 @@ namespace ConorSmith\PhpDublinMonitor;
 use Doctrine\DBAL\Connection;
 use GuzzleHttp\ClientInterface as Guzzle;
 use Icecave\Chrono\Clock\ClockInterface;
+use Teapot\StatusCode;
 
 class LogWebsiteStatus
 {
@@ -30,7 +31,7 @@ class LogWebsiteStatus
         $response = $this->guzzle->request('GET', "https://phpdublin.com/");
 
         $this->db->insert("website_status", [
-            'online'    => $response->getStatusCode() === 200,
+            'online'    => $response->getStatusCode() === StatusCode::OK,
             'logged_at' => $this->clock->utcDateTime()->format("Y-m-d H:i:s"),
         ]);
     }
