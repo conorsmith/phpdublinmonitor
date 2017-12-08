@@ -5,6 +5,7 @@ namespace ConorSmith\PhpDublinMonitor\Web;
 
 use Doctrine\DBAL\Connection;
 use Illuminate\Contracts\Container\Container;
+use League\Plates\Engine;
 
 class ServiceProvider
 {
@@ -12,7 +13,8 @@ class ServiceProvider
     {
         $container[DisplayWebsiteStatusAction::class] = function ($container) {
             return new DisplayWebsiteStatusAction(
-                $container[Connection::class]
+                $container[Connection::class],
+                new Engine(__DIR__ . "/../../resources/templates")
             );
         };
     }
