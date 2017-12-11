@@ -14,17 +14,15 @@ class ServiceProvider
 {
     public function register(Container $container): void
     {
-        $container[DisplayWebsiteStatusAction::class] = function ($container) {
-            return new DisplayWebsiteStatusAction(
-                $container[Connection::class],
-                new Engine(__DIR__ . "/../../resources/templates")
-            );
+        $container[Engine::class] = function ($container) {
+            return new Engine(__DIR__ . "/../../resources/templates");
         };
 
         $container[RouteCollection::class] = function ($container) {
             $routes = new RouteCollection;
 
             $routes->map('GET', "/", $container[DisplayWebsiteStatusAction::class]);
+            $routes->map('GET', "/historic", $container[DisplayHistoricStatusesAction::class]);
 
             return $routes;
         };
