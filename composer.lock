@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "cf034a6e088ec310911d062d494eae70",
+    "content-hash": "8e86d8102997c0af95cc8669b886925d",
     "packages": [
         {
             "name": "container-interop/container-interop",
@@ -1948,6 +1948,56 @@
                 "http"
             ],
             "time": "2017-09-01T13:40:29+00:00"
+        },
+        {
+            "name": "tuupola/slim-basic-auth",
+            "version": "2.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/tuupola/slim-basic-auth.git",
+                "reference": "0015eb872edf4796c71feaa127b3886884bb7ca6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/tuupola/slim-basic-auth/zipball/0015eb872edf4796c71feaa127b3886884bb7ca6",
+                "reference": "0015eb872edf4796c71feaa127b3886884bb7ca6",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.5 || ^7.0",
+                "psr/http-message": "^1.0"
+            },
+            "require-dev": {
+                "overtrue/phplint": "^0.2.4",
+                "phpunit/phpunit": "^4.3",
+                "squizlabs/php_codesniffer": "^2.3",
+                "zendframework/zend-diactoros": "^1.3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Slim\\Middleware\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mika Tuupola",
+                    "email": "tuupola@appelsiini.net",
+                    "homepage": "http://www.appelsiini.net/"
+                }
+            ],
+            "description": "PSR-7 HTTP Basic Authentication Middleware",
+            "homepage": "http://www.appelsiini.net/projects/slim-basic-auth",
+            "keywords": [
+                "auth",
+                "middleware",
+                "psr-7"
+            ],
+            "time": "2017-09-19T12:46:08+00:00"
         },
         {
             "name": "vlucas/phpdotenv",

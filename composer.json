@@ -16,6 +16,7 @@
     "shrikeh/teapot": "^2.3",
     "league/plates": "^3.3",
     "league/route": "^3.0",
-    "zendframework/zend-diactoros": "^1.6"
+    "zendframework/zend-diactoros": "^1.6",
+    "tuupola/slim-basic-auth": "^2.3"
   }
 }
