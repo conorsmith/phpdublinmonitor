@@ -7,6 +7,8 @@ use Doctrine\DBAL\Connection;
 use Illuminate\Contracts\Container\Container;
 use League\Plates\Engine;
 use League\Route\RouteCollection;
+use Zend\Diactoros\Response\EmitterInterface;
+use Zend\Diactoros\Response\SapiEmitter;
 
 class ServiceProvider
 {
@@ -26,5 +28,7 @@ class ServiceProvider
 
             return $routes;
         };
+
+        $container->bind(EmitterInterface::class, SapiEmitter::class);
     }
 }

@@ -5,6 +5,7 @@ namespace ConorSmith\PhpDublinMonitor\Web;
 
 use League\Route\RouteCollection;
 use Zend\Diactoros\Response;
+use Zend\Diactoros\Response\EmitterInterface;
 use Zend\Diactoros\ServerRequestFactory;
 
 class Kernel
@@ -12,13 +13,19 @@ class Kernel
     /** @var RouteCollection */
     private $routes;
 
-    public function __construct(RouteCollection $routes)
+    /** @var EmitterInterface */
+    private $emitter;
+
+    public function __construct(RouteCollection $routes, EmitterInterface $emitter)
     {
         $this->routes = $routes;
+        $this->emitter = $emitter;
     }
 
     public function handle(): void
     {
-        $this->routes->dispatch(ServerRequestFactory::fromGlobals(), new Response);
+        $response = $this->routes->dispatch(ServerRequestFactory::fromGlobals(), new Response);
+
+        $this->emitter->emit($response);
     }
 }
